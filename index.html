@@ -83,6 +83,35 @@
     .services{
       display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:28px
     }
+    /* Alternating row layout for Services cards */
+#services .services{
+  display:grid;
+  grid-template-columns:1fr; /* one card per row */
+  gap:28px;
+}
+#services .card{
+  display:flex;
+  align-items:center;
+  gap:24px;
+}
+#services .card .video-wrap{
+  flex:1 1 50%;
+  margin-bottom:0; /* remove bottom gap in horizontal layout */
+}
+#services .card .card-content{
+  flex:1 1 50%;
+}
+#services .card:nth-child(even){
+  flex-direction:row-reverse; /* swap for even cards */
+}
+
+/* Mobile: stack vertically */
+@media (max-width: 900px){
+  #services .card,
+  #services .card:nth-child(even){
+    flex-direction:column;
+  }
+}
     .card{
       background:var(--card);padding:20px;border-radius:14px;box-shadow:var(--shadow);
       transition:transform .2s, box-shadow .2s; position:relative; overflow:hidden;
@@ -108,6 +137,11 @@
     .badge{
       position:absolute;left:12px;top:12px;z-index:2;
       background:rgba(0,0,0,0.55);color:#fff;font-size:12px;font-weight:700;padding:6px 10px;border-radius:999px
+    }
+
+    .m-t-main{
+        right: 79px !important;
+        bottom: -39px !important;
     }
 
     /* CONTACT */
@@ -159,158 +193,142 @@
     <div class="overlay"></div>
     <div class="content">
       <h2>AI Neuro Lab</h2>
-      <!-- <p>Innovate, Automate & Grow with AI-driven solutions for your business.</p> -->
+      <p>by <strong>AKM</strong></p>
       <div class="cta-row">
         <a href="#services" class="btn">Explore Services</a>
-        <button class="btn-ghost mute-toggle" aria-pressed="true" data-hero="true">🔇 Sound Off</button>
+        <button class="btn-ghost mute-toggle m-t-main" aria-pressed="true" data-hero="true">🔇 Sound Off</button>
       </div>
     </div>
   </section>
 
   <!-- ABOUT -->
-  <section class="section" id="about">
-    <h2>About AKM</h2>
-    <div class="about">
-      <div class="video-wrap">
-        <span class="badge">About</span>
-        <video autoplay muted loop playsinline aria-label="About AI" poster="https://picsum.photos/500/350?ai" preload="metadata" data-video>
-          <source src="https://samplelib.com/lib/preview/mp4/sample-5s.mp4" type="video/mp4" />
-        </video>
-        <button class="mute-toggle" aria-pressed="true">🔇 Sound Off</button>
-      </div>
-      <div class="about-text">
-        <p><strong>AKM</strong> founded by visionary technologist Akhil Kumar Mishra, stands at the intersection of artificial intelligence and human health. We specialize in pioneering AI-driven solutions for neurology and mental wellness. Our platforms range from advanced brain tumor detection and cognitive decline prediction to sophisticated stress analytics and AI-powered rehabilitation tools. Our core mission is to harness AI to enhance neurological care, promote mental wellbeing, and empower human potential.</p>
-      </div>
+<section class="section" id="about">
+  <h2>About AKM</h2>
+  <div class="about">
+    <div class="video-wrap">
+      <span class="badge">About</span>
+
+      <!--
+      <video autoplay muted loop playsinline aria-label="About AI" poster="https://picsum.photos/500/350?ai" preload="metadata" data-video>
+        <source src="https://samplelib.com/lib/preview/mp4/sample-5s.mp4" type="video/mp4" />
+      </video>
+      <button class="mute-toggle" aria-pressed="true">🔇 Sound Off</button>
+      -->
+
+      <img src="assets/about.jpg" alt="About AKM — AI & Neuro Wellness" loading="lazy">
     </div>
-  </section>
+
+    <div class="about-text">
+      <p><strong>AKM</strong> founded by visionary technologist Akhil Kumar Mishra, stands at the intersection of artificial intelligence and human health. We specialize in pioneering AI-driven solutions for neurology and mental wellness. Our platforms range from advanced brain tumor detection and cognitive decline prediction to sophisticated stress analytics and AI-powered rehabilitation tools. Our core mission is to harness AI to enhance neurological care, promote mental wellbeing, and empower human potential.</p>
+    </div>
+  </div>
+</section>
 
   <!-- SERVICES -->
   <section class="section" id="services">
-    <h2>Our Services</h2>
-    <div class="services">
+  <h2>Our Services</h2>
+  <div class="services">
 
-      <div class="card">
-        <div class="video-wrap">
-          <span class="badge">AI & ML</span>
-          <video autoplay muted loop playsinline aria-label="AI & ML Solutions" poster="assets/1.jpeg" preload="metadata" data-video>
-            <source src="https://samplelib.com/lib/preview/mp4/sample-5s.mp4" type="video/mp4" />
-          </video>
-          <button class="mute-toggle" aria-pressed="true">🔇 Sound Off</button>
-        </div>
-        <h3>AI & ML Solutions</h3>
-        <p>We use artificial intelligence to help your business grow and operate more efficiently. Predictive Analytics: We help you forecast future trends and customer behavior, so you can make smarter, proactive decisions.</p>
+    <div class="card">
+      <div class="video-wrap">
+        <span class="badge">AI & ML</span>
+        <video autoplay muted loop playsinline aria-label="Brain-Tumor-Detection-AI" poster="assets/1.jpeg" preload="metadata" data-video>
+          <source src="Brain-Tumor-Detection-AI.mp4" type="video/mp4" />
+        </video>
+        <button class="mute-toggle" aria-pressed="true">🔇 Sound Off</button>
       </div>
-
-      <div class="card">
-        <div class="video-wrap">
-          <span class="badge">Analytics</span>
-          <video autoplay muted loop playsinline aria-label="Data Analytics & Insights" poster="assets/2.jpeg" preload="metadata" data-video>
-            <source src="https://samplelib.com/lib/preview/mp4/sample-5s.mp4" type="video/mp4" />
-          </video>
-          <button class="mute-toggle" aria-pressed="true">🔇 Sound Off</button>
-        </div>
-        <h3>Data Analytics & Insights</h3>
-        <p>Turn raw data into decisions with BI dashboards, clear visualizations, real-time analytics, and accurate data cleaning for reliable, smart, and agile business growth.</p>
+      <div class="card-content">
+        <h3>Brain-Tumor-Detection-AI</h3>
+        <p>Our Brain Tumor Detection AI is an advanced clinical support tool designed for radiologists and oncologists. Leveraging powerful deep learning models, it analyzes MRI and CT scans to identify and delineate potential tumors with remarkable speed and precision. The AI is trained on vast datasets to recognize even the most subtle abnormalities, acting as a vigilant second opinion to augment the clinician’s expertise. This significantly accelerates the diagnostic workflow and enhances accuracy, increasing the probability of early detection. By empowering healthcare professionals with data-driven insights, our platform helps improve diagnostic confidence and ultimately leads to better patient outcomes.</p>
       </div>
-
-      <div class="card">
-        <div class="video-wrap">
-          <span class="badge">Automation</span>
-          <video autoplay muted loop playsinline aria-label="Automation Services" poster="assets/3.jpeg" preload="metadata" data-video>
-            <source src="https://samplelib.com/lib/preview/mp4/sample-5s.mp4" type="video/mp4" />
-          </video>
-          <button class="mute-toggle" aria-pressed="true">🔇 Sound Off</button>
-        </div>
-        <h3>Automation Services</h3>
-        <p>Boost efficiency with RPA for routine tasks, workflow automation for speed, and AI chatbots for instant support—saving time, reducing errors, cutting costs, and improving productivity.</p>
-      </div>
-
-      <div class="card">
-        <div class="video-wrap">
-          <span class="badge">Corporate</span>
-          <video autoplay muted loop playsinline aria-label="Corporate AI Solutions" poster="assets/4.jpeg" preload="metadata" data-video>
-            <source src="https://samplelib.com/lib/preview/mp4/sample-5s.mp4" type="video/mp4" />
-          </video>
-          <button class="mute-toggle" aria-pressed="true">🔇 Sound Off</button>
-        </div>
-        <h3>Corporate AI Solutions</h3>
-        <p>Optimize business with AI—predict customer behavior, detect fraud in real time, and gain productivity insights to boost efficiency, reduce risks, and improve retention.</p>
-      </div>
-
-      <div class="card">
-        <div class="video-wrap">
-          <span class="badge">Healthcare</span>
-          <video autoplay muted loop playsinline aria-label="Healthcare AI" poster="assets/5.jpeg" preload="metadata" data-video>
-            <source src="https://samplelib.com/lib/preview/mp4/sample-5s.mp4" type="video/mp4" />
-          </video>
-          <button class="mute-toggle" aria-pressed="true">🔇 Sound Off</button>
-        </div>
-        <h3>Healthcare AI</h3>
-        <p>Enhance care with medical image analysis, patient outcome prediction, and real-time health monitoring to detect risks early and improve efficiency.</p>
-      </div>
-
-      <div class="card">
-        <div class="video-wrap">
-          <span class="badge">Logistics</span>
-          <video autoplay muted loop playsinline aria-label="Transportation & Logistics" poster="assets/6.jpeg" preload="metadata" data-video>
-            <source src="https://samplelib.com/lib/preview/mp4/sample-5s.mp4" type="video/mp4" />
-          </video>
-          <button class="mute-toggle" aria-pressed="true">🔇 Sound Off</button>
-        </div>
-        <h3>Transportation & Logistics</h3>
-        <p>Optimize supply chain with route optimization, demand forecasting, and smart traffic management to reduce costs and speed up deliveries.</p>
-      </div>
-
-      <div class="card">
-        <div class="video-wrap">
-          <span class="badge">Telecom</span>
-          <video autoplay muted loop playsinline aria-label="Telecommunication AI" poster="assets/7.jpeg" preload="metadata" data-video>
-            <source src="https://samplelib.com/lib/preview/mp4/sample-5s.mp4" type="video/mp4" />
-          </video>
-          <button class="mute-toggle" aria-pressed="true">🔇 Sound Off</button>
-        </div>
-        <h3>Telecommunication AI</h3>
-        <p>Optimize networks for speed & reliability, predict maintenance to prevent outages, and use chatbots for instant support—lowering costs & boosting satisfaction.</p>
-      </div>
-
-      <div class="card">
-        <div class="video-wrap">
-          <span class="badge">Custom</span>
-          <video autoplay muted loop playsinline aria-label="Custom AI Development" poster="assets/8.jpeg" preload="metadata" data-video>
-            <source src="https://samplelib.com/lib/preview/mp4/sample-5s.mp4" type="video/mp4" />
-          </video>
-          <button class="mute-toggle" aria-pressed="true">🔇 Sound Off</button>
-        </div>
-        <h3>Custom AI Development</h3>
-        <p>Build tailored AI models, manage end-to-end implementation, and provide AI strategy & consulting aligned to business goals.</p>
-      </div>
-
-      <div class="card">
-        <div class="video-wrap">
-          <span class="badge">Cloud</span>
-          <video autoplay muted loop playsinline aria-label="Cloud & Deployment" poster="assets/9.jpeg" preload="metadata" data-video>
-            <source src="https://samplelib.com/lib/preview/mp4/sample-5s.mp4" type="video/mp4" />
-          </video>
-          <button class="mute-toggle" aria-pressed="true">🔇 Sound Off</button>
-        </div>
-        <h3>Cloud & Deployment</h3>
-        <p>Deploy AI on AWS, Azure, GCP with scalable infra and MLOps for continuous updates—reliable, high-performing real-world AI.</p>
-      </div>
-
-      <div class="card">
-        <div class="video-wrap">
-          <span class="badge">Training</span>
-          <video autoplay muted loop playsinline aria-label="Training & Consultation" poster="assets/10.jpeg" preload="metadata" data-video>
-            <source src="https://samplelib.com/lib/preview/mp4/sample-5s.mp4" type="video/mp4" />
-          </video>
-          <button class="mute-toggle" aria-pressed="true">🔇 Sound Off</button>
-        </div>
-        <h3>Training & Consultation</h3>
-        <p>Hands-on workshops, corporate training, and strategic consulting to build team expertise and align AI initiatives with business goals.</p>
-      </div>
-
     </div>
-  </section>
+
+    <div class="card">
+      <div class="video-wrap">
+        <span class="badge">Student Stress Monitor</span>
+        <video autoplay muted loop playsinline aria-label="Student Stress Monitor" poster="assets/2.jpeg" preload="metadata" data-video>
+          <source src="Student-Stress-Monitor.mp4" type="video/mp4" />
+        </video>
+        <button class="mute-toggle" aria-pressed="true">🔇 Sound Off</button>
+      </div>
+      <div class="card-content">
+        <h3>Student Stress Monitor</h3>
+        <p>Our Student Stress Monitor is an AI platform dedicated to supporting the mental wellbeing of students in modern academic environments. The system proactively identifies early signs of stress, anxiety, and academic burnout by analyzing academic and behavioral patterns while ensuring privacy. It sends timely, confidential alerts to educators and parents when potential issues are detected, enabling early, supportive intervention. The platform also provides personalized resources to help students build resilience. Our goal is to foster a healthier learning environment, empowering students to thrive emotionally and academically for long-term success.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="video-wrap">
+        <span class="badge">Voice Facial AI Stress Test</span>
+        <video autoplay muted loop playsinline aria-label="Voice Facial AI Stress Test" poster="assets/3.jpeg" preload="metadata" data-video>
+          <source src="Voice-Facial-AI-Stress-Test.mp4" type="video/mp4" />
+        </video>
+        <button class="mute-toggle" aria-pressed="true">🔇 Sound Off</button>
+      </div>
+      <div class="card-content">
+        <h3>Voice Facial AI Stress Test</h3>
+        <p>Experience the future of wellness assessment with our Voice + Facial AI Stress Test. This tool provides a rapid, objective measure of your emotional state. Our advanced AI analyzes both vocal biomarkers—like tone, pitch, and speech patterns—and subtle facial micro-expressions during a short interaction, such as a video call. This dual-analysis method offers a highly accurate, real-time snapshot of stress and anxiety levels, going beyond what is visible to the naked eye. It is a non-invasive, data-driven approach, providing quick insights for telehealth, corporate wellness programs, and personal health tracking.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="video-wrap">
+        <span class="badge">Corporate Wellness AI</span>
+        <video autoplay muted loop playsinline aria-label="Corporate Wellness AI" poster="assets/4.jpeg" preload="metadata" data-video>
+          <source src="Corporate-Wellness-AI.mp4" type="video/mp4" />
+        </video>
+        <button class="mute-toggle" aria-pressed="true">🔇 Sound Off</button>
+      </div>
+      <div class="card-content">
+        <h3>Corporate Wellness AI</h3>
+        <p>Elevate your workforce with our Corporate Wellness AI, a strategic platform that moves beyond generic perks. Our system analyzes anonymized organizational data to understand the root causes of stress and burnout specific to your company. Based on these insights, the AI designs and delivers a truly personalized wellness program, offering targeted workshops, mindfulness resources, and individual coaching pathways. This proactive and data-driven approach not only supports employee wellbeing but also directly impacts your bottom line. We empower you to build a resilient, engaged culture, boosting productivity, increasing retention, and maximizing your return on wellness investment.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="video-wrap">
+        <span class="badge">Paralysis Assist AI Rehab Tools</span>
+        <video autoplay muted loop playsinline aria-label="Paralysis Assist AI Rehab Tools" poster="assets/5.jpeg" preload="metadata" data-video>
+          <source src="Paralysis-Assist-AI-Rehab-Tools.mp4" type="video/mp4" />
+        </video>
+        <button class="mute-toggle" aria-pressed="true">🔇 Sound Off</button>
+      </div>
+      <div class="card-content">
+        <h3>Paralysis Assist AI Rehab Tools</h3>
+        <p>Our Paralysis Assist AI Rehab Tools empower the recovery journey for individuals affected by paralysis. This innovative suite uses AI to create personalized and adaptive rehabilitation programs. Using technologies like computer vision and Brain-Computer Interfaces, our system offers engaging, gamified exercises that motivate patients and promote neuroplasticity. The AI meticulously tracks every movement and milestone, providing real-time feedback and objective data for patients and their therapists. By making rehabilitation more interactive and measurable, we aim to restore function, build confidence, and help patients reclaim their vital independence.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="video-wrap">
+        <span class="badge">Advanced Neural Rehabilitation AI</span>
+        <video autoplay muted loop playsinline aria-label="Advanced Neural Rehabilitation AI" poster="assets/6.jpeg" preload="metadata" data-video>
+          <source src="Advanced-Neural-Rehabilitation-AI.mp4" type="video/mp4" />
+        </video>
+        <button class="mute-toggle" aria-pressed="true">🔇 Sound Off</button>
+      </div>
+      <div class="card-content">
+        <h3>Advanced Neural Rehabilitation AI</h3>
+        <p>Our Advanced Neural Rehabilitation AI is the next frontier in neurological recovery, designed for complex conditions like stroke and brain injury. Moving beyond conventional therapy, our platform focuses directly on rewiring neural pathways. The AI creates hyper-personalized regimens using immersive VR/AR environments and Brain-Computer Interfaces to stimulate targeted brain regions. Its predictive analytics engine monitors neural feedback, adapting exercises in real-time to maximize neuroplasticity and break through recovery plateaus. This data-driven approach provides clinicians with deep insights, accelerates patient progress, and redefines the potential of modern neuro-rehabilitation.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="video-wrap">
+        <span class="badge">Cognitive Decline Prediction AI</span>
+        <video autoplay muted loop playsinline aria-label="Cognitive Decline Prediction AI" poster="assets/7.jpeg" preload="metadata" data-video>
+          <source src="Cognitive-Decline-Prediction-AI.mp4" type="video/mp4" />
+        </video>
+        <button class="mute-toggle" aria-pressed="true">🔇 Sound Off</button>
+      </div>
+      <div class="card-content">
+        <h3>Cognitive Decline Prediction AI</h3>
+        <p>Our Cognitive Decline Prediction AI is a groundbreaking tool for proactive neurological health, identifying early signs of cognitive impairment years before they become apparent. By analyzing longitudinal data—including cognitive tests, speech patterns, and behavioral markers—our advanced machine learning models calculate a predictive risk score. This early warning system empowers clinicians and families with crucial foresight, enabling timely lifestyle interventions, care planning, and opportunities for clinical trial enrollment. We aim to shift the paradigm from late-stage diagnosis to the proactive management of long-term cognitive health, improving future quality of life.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
 
   <!-- CONTACT -->
   <section class="section contact" id="contact">
