@@ -169,26 +169,23 @@
     }
 
 
-    /* Responsive image section (auto height by image) */
-.section.image-auto { padding: 50px 10%; }
-.image-auto .img-box{
-  width: fit-content;         /* shrink to image width */
-  max-width: 100%;            /* never overflow container */
-  margin: 0 auto;             /* center horizontally */
-}
-.image-auto .img-box img{
-  display: block;
-  max-width: 100%;            /* scale down on small screens */
-  height: auto;               /* keep aspect ratio */
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
-}
-.image-auto .img-box figcaption{
-  text-align:center; color:#555; font-size:14px; margin-top:8px;
+ #feature-image {
+  text-align: center;
+  padding: 2rem 1rem;
 }
 
-/* Optional: tighter vertical padding for this section */
-.section.image-auto.slim { padding: 28px 10%; }
+#feature-image h2 {
+  color: #152543;
+  margin-bottom: 1rem;
+}
+
+#feature-image img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
   </style>
 </head>
 <body>
@@ -358,25 +355,11 @@
   </div>
 </section>
 
-  <section class="section image-auto" id="feature-image">
-  <h2 style="text-align:center; color:#152543; margin-bottom:20px;">Feature Image</h2>
-
-  <figure class="img-box">
-    <img
-      src="conditions.png"
-      srcset="
-        conditions.png.jpg 600w,
-        aconditions.png.jpg 900w,
-        conditions.png 1200w,
-        conditions.png 1600w
-      "
-      sizes="(max-width: 768px) 90vw, (max-width: 1200px) 80vw, 1000px"
-      alt="AKM — AI & Neuro Wellness"
-      loading="lazy"
-      width="1200" height="800"
-    />
-  </figure>
+  <section id="feature-image">
+  <h2>Feature Image</h2>
+  <img src="conditions.png" alt="AKM — AI & Neuro Wellness" loading="lazy">
 </section>
+
 
   <!-- CONTACT -->
   <section class="section contact" id="contact">
